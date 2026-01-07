@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -114,11 +114,14 @@
                             <stop offset="100%" stopColor="#581c87" />
                         </linearGradient>
                     </defs>
+                    <!-- Hexagon Shape -->
                     <path d="M100 10 L186.6 60 V160 L100 210 L13.4 160 V60 Z" fill="url(#logoGradient)" stroke="url(#strokeGradient)" stroke-width="8" stroke-linejoin="round"/>
-                    <path d="M100 25 L173 67 V153 L100 195 L27 153 V67 Z" stroke="white" stroke-opacity="0.15" stroke-width="1.5"/>
-                    <text x="100" y="145" text-anchor="middle" fill="none" stroke="white" stroke-width="3.5" font-size="95" font-weight="800" font-family="sans-serif" style="letter-spacing: -8px">AS</text>
+                    <!-- Inner Detail Line -->
+                    <path d="M100 25 L173 67 V153 L100 195 L27 153 V67 Z" stroke="white" stroke-opacity="0.1" stroke-width="2"/>
+                    <!-- AS Monogram (Outline Style) -->
+                    <text x="100" y="150" text-anchor="middle" fill="none" stroke="white" stroke-width="6" font-size="110" font-weight="900" font-family="sans-serif" style="letter-spacing: -8px">AS</text>
                 </svg>
-                <span class="text-xl font-bold tracking-tighter hidden md:block">ACE STUDIIO</span>
+                <span class="text-xl font-bold tracking-tighter">ACE STUDIIO</span>
             </a>
 
             <!-- Desktop Menu -->
@@ -167,7 +170,7 @@
                     </h1>
                     
                     <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
-                        Premium designs, viral video editing, and high-performance websites. We build the assets that build your brand.
+                        Premium designs, Brand Promotion Videos, and high-performance websites. We build the assets that build your brand.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
@@ -216,36 +219,36 @@
                 <p class="text-gray-400 max-w-2xl mx-auto">Everything you need to dominate your market, all under one roof.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
                 <!-- Service 1 -->
-                <div class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal">
+                <a href="#contact" onclick="prefillService('Social Media')" class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal block cursor-pointer">
                     <div class="w-14 h-14 bg-brand-neon/10 rounded-xl flex items-center justify-center text-brand-neon mb-6 group-hover:scale-110 transition-transform">
                         <i data-lucide="palette" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Social Media</h3>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-brand-neon transition-colors">Social Media</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">High-quality static designs and carousels tailored for your brand identity.</p>
-                </div>
+                </a>
 
                 <!-- Service 2 -->
-                <div class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal" style="transition-delay: 100ms">
+                <a href="#contact" onclick="prefillService('Reels & Videos')" class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal block cursor-pointer" style="transition-delay: 100ms">
                     <div class="w-14 h-14 bg-brand-neon/10 rounded-xl flex items-center justify-center text-brand-neon mb-6 group-hover:scale-110 transition-transform">
                         <i data-lucide="video" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Reels & Videos</h3>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-brand-neon transition-colors">Reels & Videos</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">Dynamic short-form content designed to capture attention and go viral.</p>
-                </div>
+                </a>
 
                 <!-- Service 3 -->
-                <div class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal" style="transition-delay: 200ms">
+                <a href="#contact" onclick="prefillService('Branding')" class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal block cursor-pointer" style="transition-delay: 200ms">
                     <div class="w-14 h-14 bg-brand-neon/10 rounded-xl flex items-center justify-center text-brand-neon mb-6 group-hover:scale-110 transition-transform">
                         <i data-lucide="layout" class="w-7 h-7"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Branding</h3>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-brand-neon transition-colors">Branding</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">Unified visual language across all platforms to build trust and recognition.</p>
-                </div>
+                </a>
 
                 <!-- Service 4 (Highlighted) -->
-                <div class="group relative p-8 rounded-2xl bg-gradient-to-b from-brand-purple/20 to-brand-neon/5 border border-brand-neon/50 shadow-[0_0_30px_rgba(217,70,239,0.1)] hover:-translate-y-2 transition-transform reveal" style="transition-delay: 300ms">
+                <a href="#webdev" class="group relative p-8 rounded-2xl bg-gradient-to-b from-brand-purple/20 to-brand-neon/5 border border-brand-neon/50 shadow-[0_0_30px_rgba(217,70,239,0.1)] hover:-translate-y-2 transition-transform reveal block cursor-pointer" style="transition-delay: 300ms">
                     <div class="absolute top-0 right-0 p-2">
                         <span class="text-[10px] font-bold bg-brand-neon text-white px-2 py-1 rounded-full">POPULAR</span>
                     </div>
@@ -254,6 +257,32 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Web Development</h3>
                     <p class="text-sm text-gray-300 leading-relaxed">Blazing fast, SEO-optimized websites built with modern tech.</p>
+                </a>
+            </div>
+
+            <!-- Process Section (New Page Content) -->
+            <div class="bg-white/5 rounded-3xl p-8 md:p-16 border border-white/10 reveal">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">How We Work</h2>
+                    <p class="text-gray-400">Simple, transparent, and effective.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="text-center relative group">
+                        <div class="text-6xl font-black text-brand-neon mb-6 opacity-80">01</div>
+                        <h3 class="text-xl font-bold mb-3 text-brand-neon">Consultation</h3>
+                        <p class="text-gray-400 text-sm">We discuss your goals, target audience, and brand vision to create a tailored strategy.</p>
+                    </div>
+                    <div class="text-center relative group">
+                        <div class="text-6xl font-black text-brand-neon mb-6 opacity-80">02</div>
+                        <h3 class="text-xl font-bold mb-3 text-brand-neon">Creation</h3>
+                        <p class="text-gray-400 text-sm">Our expert team designs, edits, and develops your assets with precision and creativity.</p>
+                    </div>
+                    <div class="text-center relative group">
+                        <div class="text-6xl font-black text-brand-neon mb-6 opacity-80">03</div>
+                        <h3 class="text-xl font-bold mb-3 text-brand-neon">Delivery</h3>
+                        <p class="text-gray-400 text-sm">You get premium, ready-to-publish assets that drive real engagement and growth.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -262,7 +291,7 @@
     <!-- Web Dev Detail Section -->
     <section id="webdev" class="py-24 relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-24">
                 <div class="flex-1 reveal">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-neon/10 border border-brand-neon/20 mb-6 text-brand-neon text-sm font-bold">
                         <i data-lucide="zap" class="w-4 h-4"></i> FEATURED SERVICE
@@ -296,14 +325,30 @@
                     <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group bg-[#0f0518]">
                         <div class="absolute inset-0 bg-gradient-to-tr from-brand-purple/20 to-transparent z-10 pointer-events-none"></div>
                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" alt="Coding" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
-                        
-                        <!-- Floating Tech Stack -->
-                        <div class="absolute bottom-6 left-6 right-6 z-20 flex justify-center gap-4">
-                            <div class="bg-black/70 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 text-xs font-mono text-blue-400">React</div>
-                            <div class="bg-black/70 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 text-xs font-mono text-yellow-400">JS</div>
-                            <div class="bg-black/70 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 text-xs font-mono text-cyan-400">Tailwind</div>
-                        </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- New Detail Content for Web Dev "Page" -->
+            <div class="reveal max-w-4xl mx-auto">
+                <div class="bg-gradient-to-br from-brand-purple/10 to-transparent p-8 rounded-3xl border border-white/10">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <i data-lucide="layers" class="text-brand-neon"></i> What We Build
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i data-lucide="check" class="text-brand-neon w-5 h-5"></i> Business Websites
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i data-lucide="check" class="text-brand-neon w-5 h-5"></i> High-Converting Landing Pages
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i data-lucide="check" class="text-brand-neon w-5 h-5"></i> Creative Portfolios
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i data-lucide="check" class="text-brand-neon w-5 h-5"></i> E-commerce Storefronts
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -434,6 +479,15 @@
         window.addEventListener('scroll', revealOnScroll);
         // Trigger once on load
         revealOnScroll();
+
+        // Prefill Service Script
+        function prefillService(serviceName) {
+            const msgInput = document.querySelector('textarea[name="message"]');
+            if(msgInput) {
+                msgInput.value = "I am interested in " + serviceName + ". ";
+                msgInput.focus();
+            }
+        }
     </script>
 </body>
 </html>

@@ -46,16 +46,7 @@ const WebDev: React.FC = () => {
                 alt="Web Development Code" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                <div className="flex items-center gap-3">
-                   <div className="flex gap-1">
-                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                   </div>
-                   <div className="h-2 w-32 bg-white/20 rounded-full"></div>
-                </div>
-              </div>
+              {/* Decorative Code UI Removed per previous requests, keeping image clean */}
             </div>
           </div>
         </div>
@@ -76,12 +67,12 @@ const WebDev: React.FC = () => {
         {/* What We Build */}
         <div className="bg-gradient-to-br from-brand-purple/20 to-black rounded-3xl p-8 md:p-12 border border-white/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="flex-1">
+            <div className="flex-1 text-center">
               <h2 className="text-3xl font-bold mb-6">What We Build</h2>
               <ul className="space-y-4">
                 {types.map((type, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-lg text-gray-300">
-                    <CheckCircle className="text-brand-neon w-6 h-6" />
+                  <li key={idx} className="flex items-center justify-center gap-3 text-lg text-gray-300">
+                    <CheckCircle className="text-brand-neon w-6 h-6 flex-shrink-0" />
                     {type}
                   </li>
                 ))}
@@ -89,7 +80,7 @@ const WebDev: React.FC = () => {
             </div>
             <div className="flex-1 text-center md:text-right">
               <h3 className="text-2xl font-bold text-white mb-4">Why Vercel?</h3>
-              <p className="text-gray-400 mb-8 max-w-md ml-auto">
+              <p className="text-gray-400 mb-8 max-w-md ml-auto mr-auto md:mr-0">
                 We deploy on Vercel to ensure your site has 99.99% uptime, global edge caching, and instant loading speeds anywhere in the world.
               </p>
               <Button to="/contact" variant="outline">Start Project</Button>
