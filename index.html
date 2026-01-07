@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ACE STUDIIO | Ace Your Growth</title>
     <meta name="description" content="Creative Agency for Designs, Videos, and Website Development." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -15,70 +22,418 @@
                 dark: '#0a0118',
                 purple: '#581c87',
                 neon: '#d946ef',
-                glow: '#a855f7'
+                glow: '#a855f7',
+                surface: 'rgba(255, 255, 255, 0.03)'
               }
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
             },
             animation: {
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'float': 'float 6s ease-in-out infinite',
-              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-20px)' },
-              },
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(10px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
               }
             }
           }
         }
       }
     </script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
       body {
         background-color: #0a0118;
         color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
       }
-      /* Custom scrollbar for Webkit */
-      ::-webkit-scrollbar {
-        width: 8px;
+      .glass {
+        background: rgba(10, 1, 24, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
-      ::-webkit-scrollbar-track {
-        background: #0a0118; 
+      .card-glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
-      ::-webkit-scrollbar-thumb {
-        background: #581c87; 
-        border-radius: 4px;
+      .text-glow {
+        text-shadow: 0 0 20px rgba(217, 70, 239, 0.3);
       }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #d946ef; 
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0a0118; }
+      ::-webkit-scrollbar-thumb { background: #581c87; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #d946ef; }
+      
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
     "vite": "https://esm.sh/vite@^7.3.1",
     "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <svg viewBox="0 0 200 220" class="w-10 h-10 md:w-12 md:h-12 transition-transform group-hover:scale-110">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="100" y1="0" x2="100" y2="220" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stopColor="#7e22ce" />
+                            <stop offset="100%" stopColor="#1e1b4b" />
+                        </linearGradient>
+                        <linearGradient id="strokeGradient" x1="0" y1="0" x2="200" y2="220" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stopColor="#d946ef" />
+                            <stop offset="100%" stopColor="#581c87" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M100 10 L186.6 60 V160 L100 210 L13.4 160 V60 Z" fill="url(#logoGradient)" stroke="url(#strokeGradient)" stroke-width="8" stroke-linejoin="round"/>
+                    <path d="M100 25 L173 67 V153 L100 195 L27 153 V67 Z" stroke="white" stroke-opacity="0.15" stroke-width="1.5"/>
+                    <text x="100" y="145" text-anchor="middle" fill="none" stroke="white" stroke-width="3.5" font-size="95" font-weight="800" font-family="sans-serif" style="letter-spacing: -8px">AS</text>
+                </svg>
+                <span class="text-xl font-bold tracking-tighter hidden md:block">ACE STUDIIO</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-sm font-medium text-gray-300 hover:text-brand-neon transition-colors">HOME</a>
+                <a href="#services" class="text-sm font-medium text-gray-300 hover:text-brand-neon transition-colors">SERVICES</a>
+                <a href="#webdev" class="text-sm font-medium text-gray-300 hover:text-brand-neon transition-colors">WEB DEV</a>
+                <a href="#contact" class="px-6 py-2 rounded-full bg-brand-neon/10 border border-brand-neon/50 text-brand-neon hover:bg-brand-neon hover:text-white transition-all duration-300">Contact Us</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menuBtn" class="md:hidden text-white p-2">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-[#0a0118]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8 md:hidden">
+        <button id="closeMenuBtn" class="absolute top-6 right-6 text-white p-2">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#home" class="mobile-link text-2xl font-bold text-white hover:text-brand-neon">Home</a>
+        <a href="#services" class="mobile-link text-2xl font-bold text-white hover:text-brand-neon">Services</a>
+        <a href="#webdev" class="mobile-link text-2xl font-bold text-white hover:text-brand-neon">Web Development</a>
+        <a href="#contact" class="mobile-link text-2xl font-bold text-brand-neon">Contact Us</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Background Blobs -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-purple/30 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-brand-neon/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <div class="flex-1 text-center md:text-left reveal active">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 mb-6 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-xs font-medium text-gray-300">Accepting New Clients</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
+                        Ace Your <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon to-purple-400 text-glow">Digital Growth</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-xl mx-auto md:mx-0">
+                        Premium designs, viral video editing, and high-performance websites. We build the assets that build your brand.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+                        <a href="#contact" class="px-8 py-4 rounded-full bg-gradient-to-r from-brand-purple to-brand-neon text-white font-bold shadow-lg shadow-brand-neon/30 hover:scale-105 transition-transform flex items-center gap-2">
+                            Start Project <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#services" class="px-8 py-4 rounded-full border border-white/20 hover:bg-white/5 text-white font-bold transition-all">
+                            View Services
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex-1 w-full max-w-lg animate-float reveal">
+                    <div class="relative aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm p-2">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-purple/20 to-brand-neon/20 z-0"></div>
+                        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=800&auto=format&fit=crop" alt="Creative Agency" class="relative z-10 w-full h-full object-cover rounded-2xl shadow-inner">
+                        
+                        <!-- Floating Badge 1 -->
+                        <div class="absolute top-8 left-8 z-20 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center gap-3 shadow-xl">
+                            <div class="p-2 bg-brand-neon/20 rounded-lg text-brand-neon"><i data-lucide="trending-up"></i></div>
+                            <div>
+                                <p class="text-xs text-gray-400">Growth</p>
+                                <p class="text-sm font-bold">+150%</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2 -->
+                        <div class="absolute bottom-8 right-8 z-20 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10 flex items-center gap-3 shadow-xl">
+                            <div class="p-2 bg-purple-500/20 rounded-lg text-purple-400"><i data-lucide="star"></i></div>
+                            <div>
+                                <p class="text-xs text-gray-400">Quality</p>
+                                <p class="text-sm font-bold">5.0/5.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brand-surface relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Our Expertise</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Everything you need to dominate your market, all under one roof.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal">
+                    <div class="w-14 h-14 bg-brand-neon/10 rounded-xl flex items-center justify-center text-brand-neon mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="palette" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Social Media</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">High-quality static designs and carousels tailored for your brand identity.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal" style="transition-delay: 100ms">
+                    <div class="w-14 h-14 bg-brand-neon/10 rounded-xl flex items-center justify-center text-brand-neon mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="video" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reels & Videos</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Dynamic short-form content designed to capture attention and go viral.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group card-glass p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 border border-transparent hover:border-brand-neon/30 reveal" style="transition-delay: 200ms">
+                    <div class="w-14 h-14 bg-brand-neon/10 rounded-xl flex items-center justify-center text-brand-neon mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layout" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Branding</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Unified visual language across all platforms to build trust and recognition.</p>
+                </div>
+
+                <!-- Service 4 (Highlighted) -->
+                <div class="group relative p-8 rounded-2xl bg-gradient-to-b from-brand-purple/20 to-brand-neon/5 border border-brand-neon/50 shadow-[0_0_30px_rgba(217,70,239,0.1)] hover:-translate-y-2 transition-transform reveal" style="transition-delay: 300ms">
+                    <div class="absolute top-0 right-0 p-2">
+                        <span class="text-[10px] font-bold bg-brand-neon text-white px-2 py-1 rounded-full">POPULAR</span>
+                    </div>
+                    <div class="w-14 h-14 bg-brand-neon rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-brand-neon/40">
+                        <i data-lucide="globe" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Web Development</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">Blazing fast, SEO-optimized websites built with modern tech.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Dev Detail Section -->
+    <section id="webdev" class="py-24 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-neon/10 border border-brand-neon/20 mb-6 text-brand-neon text-sm font-bold">
+                        <i data-lucide="zap" class="w-4 h-4"></i> FEATURED SERVICE
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        Websites that <br />
+                        <span class="text-brand-neon">Convert & Perform</span>
+                    </h2>
+                    <p class="text-lg text-gray-400 mb-8">
+                        Don't settle for slow templates. Get a custom-built, high-performance website tailored to your business goals.
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i data-lucide="check-circle" class="text-brand-neon w-6 h-6"></i> Mobile-First Design
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i data-lucide="check-circle" class="text-brand-neon w-6 h-6"></i> Blazing Fast Speed
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <i data-lucide="check-circle" class="text-brand-neon w-6 h-6"></i> SEO Optimized
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="px-8 py-3 rounded-full border-2 border-brand-neon text-brand-neon hover:bg-brand-neon hover:text-white font-bold transition-all inline-block">
+                        Build My Website
+                    </a>
+                </div>
+
+                <div class="flex-1 w-full reveal">
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group bg-[#0f0518]">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-purple/20 to-transparent z-10 pointer-events-none"></div>
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" alt="Coding" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+                        
+                        <!-- Floating Tech Stack -->
+                        <div class="absolute bottom-6 left-6 right-6 z-20 flex justify-center gap-4">
+                            <div class="bg-black/70 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 text-xs font-mono text-blue-400">React</div>
+                            <div class="bg-black/70 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 text-xs font-mono text-yellow-400">JS</div>
+                            <div class="bg-black/70 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 text-xs font-mono text-cyan-400">Tailwind</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-brand-surface to-brand-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Get in Touch</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Ready to take your brand to the next level? Reach out directly.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
+                <!-- Info -->
+                <div class="flex-1 space-y-6 reveal">
+                    <div class="card-glass p-8 rounded-3xl h-full">
+                        <h3 class="text-2xl font-bold mb-8">Contact Info</h3>
+                        
+                        <div class="space-y-8">
+                            <a href="tel:6381798761" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
+                                <div class="p-4 bg-brand-purple/20 rounded-full group-hover:bg-brand-neon/20 transition-colors text-brand-neon">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <span class="text-lg font-medium">+91 6381798761</span>
+                            </a>
+
+                            <a href="mailto:acestudiio60@gmail.com" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
+                                <div class="p-4 bg-brand-purple/20 rounded-full group-hover:bg-brand-neon/20 transition-colors text-brand-neon">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <span class="text-lg font-medium">acestudiio60@gmail.com</span>
+                            </a>
+
+                            <a href="https://www.instagram.com/acestudiio06?igsh=eHhnYnB4YngyeDI2" target="_blank" class="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
+                                <div class="p-4 bg-brand-purple/20 rounded-full group-hover:bg-brand-neon/20 transition-colors text-brand-neon">
+                                    <i data-lucide="instagram"></i>
+                                </div>
+                                <span class="text-lg font-medium">@acestudiio06</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="flex-1 reveal" style="transition-delay: 100ms">
+                    <form class="card-glass p-8 rounded-3xl space-y-6" onsubmit="event.preventDefault(); window.location.href='mailto:acestudiio60@gmail.com?subject=Inquiry from Website&body=Name: '+this.name.value+'%0D%0AMessage: '+this.message.value;">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
+                            <input type="text" name="name" required class="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-brand-neon text-white placeholder-gray-600 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                            <textarea name="message" rows="4" required class="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl focus:outline-none focus:border-brand-neon text-white placeholder-gray-600 transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-brand-neon hover:bg-brand-neon/90 text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-neon/25 flex items-center justify-center gap-2">
+                            Send Message <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/80 border-t border-white/5 py-12">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <h2 class="text-2xl font-bold text-white">ACE STUDIIO</h2>
+                <p class="text-gray-500 text-sm mt-1">Creative • Video • Web</p>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; <script>document.write(new Date().getFullYear())</script> ACE STUDIIO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/916381798761?text=Hi%20ACE%20STUDIIO%2C%20I%20am%20interested%20in%20your%20services." target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform animate-bounce hover:animate-none">
+        <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Scroll Navbar Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass');
+            } else {
+                navbar.classList.remove('glass');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger once on load
+        revealOnScroll();
+    </script>
+</body>
 </html>
