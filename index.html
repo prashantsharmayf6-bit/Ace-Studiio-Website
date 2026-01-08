@@ -507,48 +507,59 @@
             }
         }
 
-        // Confetti Effect
+        // Confetti Effect - First Time Visitors Only
         window.addEventListener('load', () => {
-            // Trigger confetti
-            const duration = 2500;
-            const end = Date.now() + duration;
+            // Check if animation has already played for this user
+            const hasSeenConfetti = localStorage.getItem('ace_studio_confetti_shown');
             
-            // Brand colors: Neon Pink (#d946ef), Purple (#581c87), White
-            const colors = ['#d946ef', '#581c87', '#ffffff'];
+            if (!hasSeenConfetti) {
+                // Mark as seen so it doesn't play again on reload
+                localStorage.setItem('ace_studio_confetti_shown', 'true');
 
-            (function frame() {
-                // Left Popper
-                confetti({
-                    particleCount: 5,
-                    angle: 60,
-                    spread: 70,
-                    origin: { x: 0, y: 0.6 },
-                    colors: colors,
-                    startVelocity: 70,
-                    gravity: 1.0,
-                    drift: 0,
-                    ticks: 300,
-                    scalar: 1.1
-                });
-                // Right Popper
-                confetti({
-                    particleCount: 5,
-                    angle: 120,
-                    spread: 70,
-                    origin: { x: 1, y: 0.6 },
-                    colors: colors,
-                    startVelocity: 70,
-                    gravity: 1.0,
-                    drift: 0,
-                    ticks: 300,
-                    scalar: 1.1
-                });
+                // Trigger confetti animation
+                const duration = 2500; // Animation lasts 2.5 seconds
+                const end = Date.now() + duration;
+                
+                // Brand colors: Neon Pink (#d946ef), Purple (#581c87), White
+                const colors = ['#d946ef', '#581c87', '#ffffff'];
 
-                // Keep going until we are out of time
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            }());
+                (function frame() {
+                    // Left Side Blaster
+                    confetti({
+                        particleCount: 4,
+                        angle: 55, // Shoot towards center
+                        spread: 60,
+                        origin: { x: 0, y: 0.65 },
+                        colors: colors,
+                        startVelocity: 65,
+                        gravity: 1.2,
+                        drift: 0.5,
+                        ticks: 300,
+                        scalar: 1.2,
+                        disableForReducedMotion: true
+                    });
+                    
+                    // Right Side Blaster
+                    confetti({
+                        particleCount: 4,
+                        angle: 125, // Shoot towards center
+                        spread: 60,
+                        origin: { x: 1, y: 0.65 },
+                        colors: colors,
+                        startVelocity: 65,
+                        gravity: 1.2,
+                        drift: -0.5,
+                        ticks: 300,
+                        scalar: 1.2,
+                        disableForReducedMotion: true
+                    });
+
+                    // Continue animation frame until duration ends
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }());
+            }
         });
     </script>
 </body>
