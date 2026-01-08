@@ -32,11 +32,16 @@
             animation: {
               'float': 'float 6s ease-in-out infinite',
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
             },
             keyframes: {
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-20px)' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
               }
             }
           }
@@ -46,6 +51,8 @@
     
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
     <style>
       body {
@@ -159,6 +166,17 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
                 <div class="flex-1 text-center md:text-left reveal active">
+                    <!-- We Are Live Badge -->
+                    <div class="mb-4 flex justify-center md:justify-start">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-neon/20 border border-brand-neon/50 shadow-[0_0_20px_rgba(217,70,239,0.3)] backdrop-blur-md animate-fade-in-up">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-neon"></span>
+                            </span>
+                            <span class="text-xs font-bold tracking-widest text-brand-neon uppercase">We Are Live !</span>
+                        </div>
+                    </div>
+
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 mb-6 backdrop-blur-sm">
                         <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                         <span class="text-xs font-medium text-gray-300">Accepting New Clients</span>
@@ -488,6 +506,50 @@
                 msgInput.focus();
             }
         }
+
+        // Confetti Effect
+        window.addEventListener('load', () => {
+            // Trigger confetti
+            const duration = 2500;
+            const end = Date.now() + duration;
+            
+            // Brand colors: Neon Pink (#d946ef), Purple (#581c87), White
+            const colors = ['#d946ef', '#581c87', '#ffffff'];
+
+            (function frame() {
+                // Left Popper
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 70,
+                    origin: { x: 0, y: 0.6 },
+                    colors: colors,
+                    startVelocity: 70,
+                    gravity: 1.0,
+                    drift: 0,
+                    ticks: 300,
+                    scalar: 1.1
+                });
+                // Right Popper
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 70,
+                    origin: { x: 1, y: 0.6 },
+                    colors: colors,
+                    startVelocity: 70,
+                    gravity: 1.0,
+                    drift: 0,
+                    ticks: 300,
+                    scalar: 1.1
+                });
+
+                // Keep going until we are out of time
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        });
     </script>
 </body>
 </html>

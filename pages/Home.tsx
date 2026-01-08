@@ -17,6 +17,17 @@ const Home: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
             {/* Text Content */}
             <div className="flex-1 text-center md:text-left">
+              {/* We Are Live Badge */}
+              <div className="mb-4 flex justify-center md:justify-start">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-neon/20 border border-brand-neon/50 shadow-[0_0_20px_rgba(217,70,239,0.3)] backdrop-blur-md">
+                      <span className="relative flex h-2.5 w-2.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-neon"></span>
+                      </span>
+                      <span className="text-xs font-bold tracking-widest text-brand-neon uppercase">We Are Live !</span>
+                  </div>
+              </div>
+
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 mb-6 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                 <span className="text-xs md:text-sm font-medium text-gray-300">Accepting New Clients</span>
