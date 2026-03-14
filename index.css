@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #0a0118;
+  --color-brand-purple: #581c87;
+  --color-brand-neon: #d946ef;
+  --color-brand-glow: #a855f7;
+  --color-brand-surface: rgba(255, 255, 255, 0.03);
+}
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-white font-sans antialiased selection:bg-brand-neon selection:text-white overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-brand-dark/70 backdrop-blur-md border-b border-white/5;
+  }
+  
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/5;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px rgba(217, 70, 239, 0.3);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}

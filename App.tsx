@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import WhatsAppBtn from './components/WhatsAppBtn';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import Portfolio from './pages/Portfolio';
 import WebDev from './pages/WebDev';
 import Contact from './pages/Contact';
 
@@ -33,6 +34,7 @@ const AnimatedRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/website-development" element={<WebDev />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />

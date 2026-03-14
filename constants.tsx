@@ -12,6 +12,7 @@ export const WHATSAPP_URL = "https://wa.me/916381798761?text=Hi%20ACE%20STUDIIO%
 export const NAV_LINKS: NavLink[] = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
+  { name: 'Portfolio', path: '/portfolio' },
   { name: 'Website Development', path: '/website-development' },
   { name: 'Contact', path: '/contact' },
 ];
